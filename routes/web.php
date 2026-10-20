@@ -45,51 +45,35 @@ Route::get('/berita', function () {
     ]);
 });
 
+
 Route::get('/berita/{id}', function ($id) {
 
     $data_berita = [
-
         1 => [
-
             "id" => 1,
-
             "judul" => "MAHASISWA TI",
-
             "penulis" => "Admin",
-
             "konten" => "Teknologi Informasi (TI) adalah teknologi yang membantu manusia membuat, mengubah, menyimpan, dan menyebarkan informasi."
-
         ],
 
         2 => [
-
             "id" => 2,
-
             "judul" => "TI",
-
             "penulis" => "Soak",
-
             "konten" => "Teknologi Informasi mencakup pengolahan, penyimpanan, dan penyebaran informasi melalui komputasi dan telekomunikasi."
-
         ]
-
     ];
 
     if (!isset($data_berita[$id])) {
-
         abort(404);
-
     }
 
-    return view('detail-berita', [
-
-        "title" => $data_berita[$id]["judul"],
-
+    return view('beritatunggal', [
+        "title" => "Berita Tunggal",
         "berita" => $data_berita[$id]
-
     ]);
-
 });
+
 
 Route::get('/contact', function () {
     return view('contact',[
