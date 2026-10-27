@@ -8,8 +8,16 @@ class BeritaController extends Controller
 {
     public function tampilBerita ()
     {
-         return view('detail-berita', [
+        $beritas = Berita::all();
 
+        foreach($beritta as $berita)
+        {
+            if($berita['slug'] === $slug)
+            {
+                $beritatunggal = $berita;
+            }
+        }
+         return view('detail-berita', [
         "title" => Berita::find(slug),
         "berita" => Berita::find(slug),
 
