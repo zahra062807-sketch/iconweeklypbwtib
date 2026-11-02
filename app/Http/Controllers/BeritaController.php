@@ -2,25 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\berita;
+use PhpParser\Node\Stmt\Foreach_;
+
+// use Illuminate\Http\Request;
 
 class BeritaController extends Controller
 {
-    public function tampilBerita ()
+    public function tampilberita()
+    {
+        return view('berita', [
+        "title" => "Berita",
+        "beritas" => Berita::all(),
+    ]);
+    }
+
+    public static function tampilberitatunggal($slug)
     {
         $beritas = Berita::all();
 
-        foreach($beritta as $berita)
-        {
-            if($berita['slug'] === $slug)
-            {
-                $beritatunggal = $berita;
-            }
-        }
-         return view('detail-berita', [
-        "title" => Berita::find(slug),
-        "berita" => Berita::find(slug),
+        $singlenews =[];
 
+        Foreach($beritas as $berita)
+        {
+            if($berita["slug"] === $slug)
+                {
+                    $singlenews = $berita;
+                }
+        }
+
+        return view('beritatunggal', [
+        "title" => $singlenews["judul"],
+        "singelnews" => $singlenews,
     ]);
     }
 }
