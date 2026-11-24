@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Mahasiswacontroller;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -80,3 +81,5 @@ Route::get('/contact', function () {
         "title" => "Contact"
     ]);
 });
+
+Route::get ('/mahasiswa',[Mahasiswacontroller::class,'index'])->name('mahasiswa');
